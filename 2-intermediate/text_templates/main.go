@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// // tmpl := template.New("example")
-	//
+
 	// // tmpl, err := template.New("example").Parse("Welcome, {{.name}}! How are you doing?\n")
 	// // if err != nil {
 	// // 	panic(err)
