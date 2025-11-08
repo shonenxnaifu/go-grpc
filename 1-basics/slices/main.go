@@ -15,8 +15,8 @@ func main() {
 	a := [5]int{1, 2, 3, 4, 5}
 	slice1 := a[1:4]
 
-	fmt.Println(slice)
-	fmt.Println(slice1)
+	fmt.Println("slice:", slice, cap(slice))
+	fmt.Println("slice1:", slice1, cap(slice1))
 
 	slice1 = append(slice1, 6, 7)
 	fmt.Println(slice1)
@@ -24,10 +24,11 @@ func main() {
 
 	sliceCopy := make([]int, len(slice1))
 	copy(sliceCopy, slice1)
-	fmt.Println("Slice Copy: ", sliceCopy)
+	fmt.Println("Slice Copy: ", sliceCopy, cap(sliceCopy))
 
 	var nilSlice []int
 	fmt.Println(nilSlice)
+	fmt.Println(nilSlice == nil)
 
 	for i, v := range slice1 {
 		fmt.Println(i, v)

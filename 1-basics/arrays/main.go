@@ -52,7 +52,9 @@ func main()  {
 		{7,8,9},
 	}
 
-	fmt.Println(matrix)
+	fmt.Println("mtarix:", matrix)
+	fmt.Println("mtarix:", matrix[1][1])
+	fmt.Println("mtarix:", matrix[2][2])
 
 	originalArray2 := [3]int{1,2,3}
 	var copiedArray2 *[3]int
