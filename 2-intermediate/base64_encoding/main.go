@@ -18,6 +18,7 @@ func main() {
 		fmt.Println("Error in decoding:", err)
 		return
 	}
+	fmt.Println("Decoded binary:", decoded)
 	fmt.Println("Decoded:", string(decoded))
 
 	// URL safe, avoid '/' and '+'

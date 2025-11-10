@@ -3,7 +3,7 @@ package main
 import (
 	"crypto/rand"
 	"crypto/sha256"
-	// "crypto/sha512"
+	"crypto/sha512"
 	"encoding/base64"
 	"fmt"
 	// "hash"
@@ -13,18 +13,18 @@ import (
 func main() {
 	password := "password123"
 
-	// hash := sha256.Sum256([]byte(password))
-	// hash512 := sha512.Sum512([]byte(password))
-	//
-	// fmt.Println(password)
-	// fmt.Println(hash)
-	// fmt.Println(hash512)
-	// fmt.Printf("SHA-256 Hash hex val: %x\n", hash)
-	// fmt.Printf("SHA-512 Hash hex val: %x\n", hash512)
+	testHash := sha256.Sum256([]byte(password))
+	testHash512 := sha512.Sum512([]byte(password))
+
+	fmt.Println(password)
+	fmt.Println(testHash)
+	fmt.Println(testHash512)
+	fmt.Printf("SHA-256 Hash hex val: %x\n", testHash)
+	fmt.Printf("SHA-512 Hash hex val: %x\n", testHash512)
 
 	salt, err := generateSalt()
 	fmt.Println("Original Salt:", salt)
-	fmt.Printf("Original Salt: %x\n", salt)
+	fmt.Printf("Original Salt Hex: %x\n", salt)
 	if err != nil {
 		fmt.Println("Error generating salt:", err)
 		return
