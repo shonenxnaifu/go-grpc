@@ -1,0 +1,23 @@
+package main
+
+import "github.com/sirupsen/logrus"
+
+func main() {
+	log := logrus.New()
+
+	// Set log level
+	log.SetLevel(logrus.InfoLevel)
+
+	// Set log format
+	log.SetFormatter(&logrus.JSONFormatter{})
+
+	// Logging examples
+	log.Info("This is an info message.")
+	log.Warn("This is a warn message.")
+	log.Error("This is an warning message.")
+
+	log.WithFields(logrus.Fields{
+		"username": "John Doe",
+		"method":   "GET",
+	}).Info("User logged in.")
+}
