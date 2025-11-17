@@ -61,10 +61,13 @@ func main() {
 	c := circle{radius: 5}
 	r1 := rect1{width: 5, height: 6}
 
+	fmt.Println("---rect---")
 	measure(r)
+	fmt.Println("---circle---")
 	measure(c)
+	fmt.Println("---rect 1---")
 	measure(r1)
-	fmt.Println(c.diameter())
+	fmt.Println("circle diameter:", c.diameter())
 
 	myPrinter(1, "john", 45.9, true)
 	value(1)
