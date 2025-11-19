@@ -16,14 +16,16 @@ func readFromReader(r io.Reader) {
 		log.Fatalln("Error reading from reader:", err)
 	}
 
-	fmt.Println(string(buf[:n]))
+	fmt.Println("Number of bytes actually read:", n)
+	fmt.Println("Content that was read:", string(buf[:n]))
 }
 
 func writeToWriter(w io.Writer, data string) {
-	_, err := w.Write([]byte(data))
+	n, err := w.Write([]byte(data))
 	if err != nil {
 		log.Fatalln("Error writing from writer:", err)
 	}
+	fmt.Println("Number of bytes actually write:", n)
 }
 
 func closeResource(c io.Closer) {
@@ -35,6 +37,7 @@ func closeResource(c io.Closer) {
 
 func bufferExample() {
 	var buf bytes.Buffer // stack
+	fmt.Printf("type of buf: %T\n", buf)
 	buf.WriteString("Hello Buffer!")
 	fmt.Println(buf.String())
 }
@@ -44,6 +47,7 @@ func multiReaderExample() {
 	r2 := strings.NewReader("World!")
 	mr := io.MultiReader(r1, r2)
 	buf := new(bytes.Buffer) // heap
+	fmt.Printf("type of buf: %T\n", buf)
 	_, err := buf.ReadFrom(mr)
 	if err != nil {
 		log.Fatalln("Error reading from multi reader:", err)
@@ -88,6 +92,7 @@ func main() {
 
 	fmt.Println("=== Read from Reader ===")
 	readFromReader(strings.NewReader("Hello Reader!"))
+
 	fmt.Println("=== Write to Writer ===")
 	var writer bytes.Buffer
 	writeToWriter(&writer, "Hello Writer!")
@@ -114,6 +119,6 @@ type MyResource struct {
 }
 
 func (m MyResource) Close() error {
-	fmt.Println("Closing resource:", m.name)
+	fmt.Println("Closing resource from MyResource:", m.name)
 	return nil
 }
